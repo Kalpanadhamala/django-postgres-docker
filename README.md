@@ -1,69 +1,67 @@
-# Django Books API
+Django + PostgreSQL with Docker
 
-A simple Django REST API for Books CRUD operations.
+A Django REST API for book management, containerized with Docker Compose.
 
-## Setup
+ About This Project
+This project demonstrates a complete Django application containerized with Docker. I built this step-by-step while learning Docker containerization and multi-service orchestration.
 
-1. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+ What I Built
+Django REST API for managing books
 
-2. Create PostgreSQL database:
-```sql
-CREATE DATABASE books_db;
-```
+PostgreSQL database for data persistence
 
-3. Update `.env` file with your database credentials.
+Docker containerization for both services
 
-4. Run migrations:
-```bash
-python manage.py migrate
-```
+Docker Compose for multi-container orchestration
 
-5. Run the server:
-```bash
-python manage.py runserver
-```
+ What I Did (Step by Step)
 
-## API Endpoints
+1. Initial Setup
+Created Django project and app
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/books/` | List all books |
-| POST | `/api/books/` | Create a new book |
-| GET | `/api/books/<id>/` | Get a specific book |
-| PUT | `/api/books/<id>/` | Update a book |
-| PATCH | `/api/books/<id>/` | Partial update a book |
-| DELETE | `/api/books/<id>/` | Delete a book |
+Configured PostgreSQL database connection
 
-## Example Usage
+Tested locally with virtual environment
 
-### Create a book
-```bash
-curl -X POST http://localhost:8000/api/books/ \
-  -H "Content-Type: application/json" \
-  -d '{"name": "My Book", "description": "A great book"}'
-```
+2. Docker Configuration
+Created Dockerfile for Django application
 
-### List all books
-```bash
-curl http://localhost:8000/api/books/
-```
+Created docker-compose.yml for multi-container setup
 
-### Get a single book
-```bash
-curl http://localhost:8000/api/books/1/
-```
+Configured PostgreSQL service with health checks
 
-### Update a book
-```bash
-curl -X PUT http://localhost:8000/api/books/1/ \
-  -H "Content-Type: application/json" \
-  -d '{"name": "Updated Book", "description": "Updated description"}'
-```
+3. Final Working Setup
+ Both containers running on same network
 
-### Delete a book
-```bash
-curl -X DELETE http://localhost:8000/api/books/1/
-```
+ Django successfully connected to PostgreSQL
+
+ Database migrations applied automatically
+
+ Application accessible at http://localhost:8000
+
+Technologies Used
+Django - Python web framework
+
+PostgreSQL - Database
+
+Docker - Containerization
+
+Docker Compose - Multi-container orchestration
+
+
+🎯 Key Commands I Used
+bash
+# Build and run
+sudo docker compose up --build
+
+# Stop containers
+sudo docker compose down
+
+# Remove everything (including volumes)
+sudo docker compose down -v
+
+# Check running containers
+sudo docker ps
+
+# View logs
+sudo docker logs django_backend
