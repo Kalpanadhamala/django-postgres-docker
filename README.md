@@ -1,67 +1,79 @@
-Django + PostgreSQL with Docker
+# Django + PostgreSQL with Docker
 
-A Django REST API for book management, containerized with Docker Compose.
+## 1. Introduction
+This project demonstrates a Django REST API for managing books, containerized using Docker and orchestrated with Docker Compose. The goal of this project is to understand how a Django application and a PostgreSQL database can run as separate containers while communicating over a shared Docker network.
 
- About This Project
-This project demonstrates a complete Django application containerized with Docker. I built this step-by-step while learning Docker containerization and multi-service orchestration.
+## 2. About the Project
+This project was built while learning Docker containerization and multi-service orchestration. It shows how a backend application and a database service can be deployed together using Docker Compose.
 
- What I Built
-Django REST API for managing books
+The application allows users to manage book records using a Django REST API while storing the data in a PostgreSQL database.
 
-PostgreSQL database for data persistence
+## 3. Features
+- Django REST API for managing books
+- PostgreSQL database for persistent data storage
+- Docker containerization for the backend service
+- Docker Compose for running multiple services
+- Automatic database migrations
+- Communication between containers through a shared Docker network
 
-Docker containerization for both services
+## 4. Project Components
 
-Docker Compose for multi-container orchestration
+### 4.1 Backend Service
+The backend service runs the Django application. It handles API requests and communicates with the PostgreSQL database to store and retrieve data.
 
- What I Did (Step by Step)
+### 4.2 Database Service
+The PostgreSQL service stores all the application data. Docker volumes are used to ensure that the data persists even if the container stops.
 
-1. Initial Setup
-Created Django project and app
+## 5. Implementation Steps
 
-Configured PostgreSQL database connection
+### 5.1 Initial Setup
+- Created a Django project
+- Created a Django app for managing books
+- Configured PostgreSQL database connection
+- Tested the application locally using a Python virtual environment
 
-Tested locally with virtual environment
+### 5.2 Docker Configuration
+- Created a Dockerfile for the Django application
+- Created a docker-compose.yml file for running multiple containers
+- Configured a PostgreSQL service with environment variables and persistent volumes
 
-2. Docker Configuration
-Created Dockerfile for Django application
+### 5.3 Final Working Setup
+- Both containers run on the same Docker network
+- Django successfully connects to PostgreSQL
+- Database migrations run successfully
+- Application is accessible at http://localhost:8000
 
-Created docker-compose.yml for multi-container setup
+## 6. Technologies Used
+- Django – Python web framework
+- PostgreSQL – Relational database system
+- Docker – Containerization platform
+- Docker Compose – Multi-container orchestration tool
 
-Configured PostgreSQL service with health checks
+## 7. Important Docker Commands
 
-3. Final Working Setup
- Both containers running on same network
-
- Django successfully connected to PostgreSQL
-
- Database migrations applied automatically
-
- Application accessible at http://localhost:8000
-
-Technologies Used
-Django - Python web framework
-
-PostgreSQL - Database
-
-Docker - Containerization
-
-Docker Compose - Multi-container orchestration
-
-
-🎯 Key Commands I Used
-bash
-# Build and run
+### Build and run the containers
 sudo docker compose up --build
 
-# Stop containers
+
+### Stop running containers
+
 sudo docker compose down
 
-# Remove everything (including volumes)
+
+### Remove containers and volumes
+
 sudo docker compose down -v
 
-# Check running containers
+
+### Check running containers
+
 sudo docker ps
 
-# View logs
+
+### View container logs
+
 sudo docker logs django_backend
+
+
+## 8. Conclusion
+This project demonstrates how a Django backend and PostgreSQL database can be containerized and deployed using Docker Compose. It provides a simple example of multi-container architecture commonly used in modern backend development.
